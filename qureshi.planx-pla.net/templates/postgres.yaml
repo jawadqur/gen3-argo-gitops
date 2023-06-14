@@ -9,15 +9,13 @@ spec:
     - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
       targetRevision: master
       ref: values
-    - chart: gen3
-      repoURL: https://helm.gen3.org
-      targetRevision: 0.1.17
+    - chart: postgresql
+      repoURL: oci://registry-1.docker.io/bitnamicharts/postgresql
+      targetRevision: 11.9.13
       helm:
         releaseName: gen3
         valueFiles:
-          - $values/qureshi.planx-pla.net/values/gen3.yaml
-          - $values/qureshi.planx-pla.net/values/fence.yaml
-          - $values/qureshi.planx-pla.net/values/portal.yaml
+          - $values/qureshi.planx-pla.net/values/postgres.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
