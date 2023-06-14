@@ -10,7 +10,7 @@ spec:
       targetRevision: master
       ref: values
     - chart: postgresql
-      repoURL: oci://registry-1.docker.io/bitnamicharts/postgresql
+      repoURL: https://github.com/bitnami/charts.git
       targetRevision: 11.9.13
       helm:
         releaseName: gen3
@@ -23,4 +23,4 @@ spec:
     syncOptions:
     - CreateNamespace=true
     automated:
-      prune: true
+      selfHeal: true
