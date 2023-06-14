@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gen3
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
+      targetRevision: master
+      ref: values
+    - chart: gen3
+      repoURL: https://helm.gen3.org
+      targetRevision: 0.1.17
+      helm:
+        releaseName: gen3
+        valueFiles:
+          - $values/qureshi.planx-pla.net/values/values.yaml
+          - $values/qureshi.planx-pla.net/values/fence.yaml
+          - $values/qureshi.planx-pla.net/values/portal.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true

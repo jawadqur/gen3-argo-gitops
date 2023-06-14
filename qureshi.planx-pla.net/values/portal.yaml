@@ -1,0 +1,4 @@
+portal:
+  image:
+    repository: quay.io/cdis/data-portal-prebuilt
+    tag: brh.data-commons.org-feat-pr_comment

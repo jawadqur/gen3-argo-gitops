@@ -1,0 +1,3 @@
+fence:
+  FENCE_CONFIG:
+    MOCK_GOOGLE_AUTH: true

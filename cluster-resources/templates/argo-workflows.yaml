@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argo-workflows
+--- 
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  finalizers: 
+    - resources-finalizer.argocd.argoproj.io
+  name: argo-workflows
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: argo-workflows
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    chart: argo-workflows
+    repoURL: "https://argoproj.github.io/argo-helm"
+    targetRevision: 0.29.2
+  syncPolicy: 
+    automated: 
+      prune: true
+      selfHeal: true
