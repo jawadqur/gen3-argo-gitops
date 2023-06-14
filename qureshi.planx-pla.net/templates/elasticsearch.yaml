@@ -10,6 +10,7 @@ spec:
     repoURL: https://opensearch-project.github.io/helm-charts/
     helm:
       releaseName: opensearch
+      targetRevision: 2.13.1
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
