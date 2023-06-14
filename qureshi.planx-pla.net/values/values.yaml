@@ -1,5 +1,6 @@
 global:
   hostname: qureshi.planx-pla.net
+  dev: false
 
 postgresql:
   primary:
