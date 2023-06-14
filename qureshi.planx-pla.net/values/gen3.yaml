@@ -3,7 +3,7 @@ global:
   dev: false
   postgres: 
     master:
-      host: gen3-postgres
+      host: gen3-postgresql
       user: postgres
       password: test
   
