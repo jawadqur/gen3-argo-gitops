@@ -9,6 +9,7 @@ global:
 
 revproxy:
   ingress:
+    ingressClassName: kong
     enabled: true
     hosts:
     # Replace with your hostname
