@@ -1599,6 +1599,7 @@ metadata:
   name: kong-admin
   namespace: kong
 spec:
+  type: NodePort
   clusterIP: None
   ports:
   - name: admin
