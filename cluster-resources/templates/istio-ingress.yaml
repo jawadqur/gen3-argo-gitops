@@ -1,0 +1,32 @@
+# Create istio-ingress namespace with label to inject sidecar
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-4"
+  name: istio-ingress
+  labels:
+    istio-injection: enabled
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-ingress
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-ingress
+  project: default
+  source:
+    chart: istiod
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.18.0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
