@@ -17,7 +17,7 @@ But any docker runtime will work.
 - Docker Desktop: https://www.docker.com/products/docker-desktop/
 
 
-## Install king (Kubernetes in Docker)
+## Install kind (Kubernetes in Docker)
 
 https://kind.sigs.k8s.io/docs/user/quick-start/#installation
 
@@ -74,7 +74,7 @@ bash ./bootstrap.sh
 sudo vi /etc/hosts
 ```
 
-Add in the following line: 
+Add in the following line:
 
 ```bash
 127.0.0.1 qureshi.planx-pla.net
@@ -84,7 +84,7 @@ Visit https://qureshi.planx-pla.net
 
 ## View in ArgoCD UI
 
-Get the password like this: 
+Get the password like this:
 
 ```bash
 kubectl get secrets -n argocd argocd-initial-admin-secret -o yaml | yq -r .data.password | base64 -d | xargs echo
