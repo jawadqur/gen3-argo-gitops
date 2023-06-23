@@ -49,7 +49,7 @@ EOF
 
 ## Bootstrap cluster resources, and deploy gen3 
 
-This will deploy the following resources: 
+This will deploy ArgoCD and then deploy the following resources: 
 
 Cluster Resources:
 - Istio
@@ -59,6 +59,10 @@ Cluster Resources:
 - Kong Ingress
 - Prometheus
 
+Gen3 Resources:
+- PostgreSQL
+- ElasticSearch
+- Gen3 (Configuration in git)
 
 ```bash
 bash ./bootstrap.sh
