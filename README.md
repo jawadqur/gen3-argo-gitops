@@ -108,4 +108,27 @@ TBD
 
 ## App of apps pattern
 
-TBD
+
+Declaratively specify one Argo CD app that consists only of other apps.
+
+- Apps:
+![Alt text](image.png)
+The `Apps` application in Argo will deploy the following services:
+  - Gen3
+  - Postgres
+  <!-- - Elasticsearch
+  - MinIO -->
+
+
+- Cluster:
+The `Cluster` application in Argo will deploy and configure the following services:
+  - Service Mesh
+  - Observability 
+    - Prometheus
+    <!-- 
+    - Loki
+    - Grafana
+     -->
+  <!-- - Security
+    - NeuVector? 
+     -->
