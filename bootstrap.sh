@@ -1,11 +1,3 @@
-# # Check if argocd cli installed
-# if ! command -v argocd &> /dev/null
-# then
-#     echo "argocd could not be found"
-#     echo "please install argocd cli before running this script"
-#     echo "https://argo-cd.readthedocs.io/en/stable/getting_started/"
-#     exit 1
-# fi
 
 # Check if kubectl is installed
 if ! command -v kubectl &> /dev/null
