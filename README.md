@@ -1,4 +1,10 @@
-# Instructions to bootstrap a gen3 cluster using ArgoCD and KIND (Kubernetes in docker) using GitOps 
+# Gen3 Helm - GitOps exmample
+
+Instructions to bootstrap a gen3 cluster using ArgoCD and KIND (Kubernetes in docker) using GitOps. 
+
+This will deploy cluster level resources for observability, security and orchestration as well as configure and deploy gen3. 
+
+Secrets mangement is TBD, do not commit secrets to Git! 
 
 ## Install Docker or similar. 
 
