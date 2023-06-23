@@ -76,6 +76,7 @@ Add in the following line:
 127.0.0.1 qureshi.planx-pla.net
 ```
 
+Visit https://qureshi.planx-pla.net 
 
 ## View in ArgoCD UI
 
@@ -89,6 +90,12 @@ Port forward to the UI and browse to http://localhost:8080 to log in to track al
 
 ```bash
 kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+
+## Teardown
+
+```bash
+kind delete cluster
 ```
 
 ## GitOps Configration of your environment
