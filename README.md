@@ -8,7 +8,7 @@ Secrets mangement is TBD, do not commit secrets to Git!
 
 ## Install Docker or similar. 
 
-I personally have been OrbStack lately, works insanely well with M1. 
+I personally have been LOVING OrbStack lately, works insanely well with M1. I can run Docker/k8s all the time without seeing any slowdown of my computer.
 
 But any docker runtime will work. 
 
