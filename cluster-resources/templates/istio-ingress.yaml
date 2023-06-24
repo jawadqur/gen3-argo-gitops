@@ -23,7 +23,7 @@ spec:
     namespace: istio-ingress
   project: default
   source:
-    chart: istiod
+    chart: gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.18.0
   syncPolicy:
