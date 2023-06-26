@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argo-events
+--- 
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  finalizers: 
+    - resources-finalizer.argocd.argoproj.io
+  name: argo-events
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: argo-events
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    chart: argo-events
+    repoURL: "https://argoproj.github.io/argo-helm"
+    targetRevision: 2.3.3
+  syncPolicy: 
+    automated: 
+      prune: true
+      selfHeal: true
