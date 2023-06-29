@@ -5,12 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: opensearch
-    repoURL: https://opensearch-project.github.io/helm-charts/
-    targetRevision: 2.13.1
-    helm:
-      releaseName: opensearch
+  sources:
+    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
+      targetRevision: master
+      ref: values
+    - chart: opensearch
+      repoURL: https://opensearch-project.github.io/helm-charts/
+      targetRevision: 2.13.1
+      helm:
+        releaseName: opensearch
+      valuesFiles:
+        - $values/qureshi.planx-pla.net/values/opensearch.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default

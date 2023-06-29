@@ -19,12 +19,8 @@ then
 fi
 
 
-echo "Wait for argocd to be ready..."
-# # Make sure argocd cli is configured. 
-kubectl wait --namespace argocd \
-  --for=condition=ready pod \
-  --selector=app.kubernetes.io/name=argocd-server \
-  --timeout=90s
+echo "Waiting for all argocd pods to be ready..."
+kubectl wait --namespace argocd --for=condition=ready pod --all
 
 echo "Apply cluster resources..."
 # apply cluster resources
