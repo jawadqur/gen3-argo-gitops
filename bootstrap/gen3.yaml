@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   destination:
-    namespace: qureshi
+    namespace: default
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/jawadqur/gen3-argo-gitops.git
