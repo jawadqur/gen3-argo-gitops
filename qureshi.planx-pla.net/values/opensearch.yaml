@@ -1,1 +1,2 @@
 singleNode: true
+replicas: 1
