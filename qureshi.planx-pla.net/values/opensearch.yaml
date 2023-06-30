@@ -1,2 +1,3 @@
 singleNode: true
 replicas: 1
+plugins.security.disabled: true
