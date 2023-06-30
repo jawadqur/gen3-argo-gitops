@@ -6,6 +6,7 @@ portal:
     requests:
       cpu: 0.2
       memory: 128Mi
+  # This is only used if you use the default portal, the prebuilt portal will ignore these as the configuration of that portal is handled outside here.
   gitops:
     json: |
       {
