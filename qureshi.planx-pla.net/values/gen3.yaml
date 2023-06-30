@@ -26,3 +26,24 @@ revproxy:
           - qureshi.planx-pla.net
 
   
+
+arborist:
+  postgres:
+    # Helm lookup doesn't work in ArgoCD
+    password: test
+
+audit: 
+  postgres:
+    # Helm lookup doesn't work in ArgoCD
+    password: test
+
+indexd:
+  postgres:
+    # Helm lookup doesn't work in ArgoCD
+    password: test
+
+sheepdog:
+  postgres:
+    # Helm lookup doesn't work in ArgoCD
+    password: test
+
