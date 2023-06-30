@@ -42,7 +42,22 @@ indexd:
     # Helm lookup doesn't work in ArgoCD
     password: test
 
+metadata:
+  postgres:
+    # Helm lookup doesn't work in ArgoCD
+    password: test
+
+peregrine:
+  postgres:
+    # Helm lookup doesn't work in ArgoCD
+    password: test
+
 sheepdog:
+  postgres:
+    # Helm lookup doesn't work in ArgoCD
+    password: test
+
+wts:
   postgres:
     # Helm lookup doesn't work in ArgoCD
     password: test
