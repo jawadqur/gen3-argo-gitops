@@ -14,8 +14,8 @@ spec:
       targetRevision: 2.13.1
       helm:
         releaseName: opensearch
-      valueFiles:
-        - $values/qureshi.planx-pla.net/values/opensearch.yaml
+        valueFiles:
+          - $values/qureshi.planx-pla.net/values/opensearch.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
