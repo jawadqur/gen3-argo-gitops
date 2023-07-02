@@ -25,7 +25,7 @@ hatchery:
     - target-port: 8888
       cpu-limit: '.2'
       memory-limit: .2Gi
-      name: "(Tutorials) Example Analysis Jupyter Lab Notebooks"
+      name: "Test notebook"
       image: quay.io/cdis/heal-notebooks:combined_tutorials__latest
       env:
         FRAME_ANCESTORS: https://{{ .Values.global.hostname }}
