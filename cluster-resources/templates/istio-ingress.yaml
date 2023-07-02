@@ -1,3 +1,4 @@
+{{- if .Values.istio.enabled -}}
 # Create istio-ingress namespace with label to inject sidecar
 apiVersion: v1
 kind: Namespace
@@ -8,7 +9,6 @@ metadata:
   labels:
     istio-injection: enabled
 ---
-{{- if .Values.istio.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
