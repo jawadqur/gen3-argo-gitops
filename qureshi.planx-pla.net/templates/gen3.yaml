@@ -9,9 +9,6 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
-      targetRevision: master
-      ref: values
     - chart: gen3
       repoURL: https://helm.gen3.org
       targetRevision: 0.1.17
@@ -21,6 +18,9 @@ spec:
           - $values/qureshi.planx-pla.net/values/gen3.yaml
           - $values/qureshi.planx-pla.net/values/fence.yaml
           - $values/qureshi.planx-pla.net/values/portal.yaml
+    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
+      targetRevision: master
+      ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
