@@ -7,6 +7,9 @@ global:
       user: postgres
       password: test
 
+ambassador:
+  userNamespace: jupyter-pods-gen3
+
 revproxy:
   ingress:
     className: kong
