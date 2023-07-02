@@ -4,44 +4,44 @@ hatchery:
   hatchery:
     localdev: true
     sidecarContainer:
-    # -- (string) The maximum amount of CPU the sidecar container can use
-    cpu-limit: '0.1'
-    # -- (string) The maximum amount of memory the sidecar container can use
-    memory-limit: 256Mi
-    # -- (string) The sidecar image.
-    image: quay.io/cdis/ecs-ws-sidecar:master
-    # -- (map) Environment variables to pass to the sidecar container
-    env:
-      NAMESPACE: "{{ .Release.Namespace }}"
-      HOSTNAME: "{{ .Values.global.hostname }}"
-    # -- (list) Arguments to pass to the sidecare container.
-    args: []
-    # -- (list) Commands to run for the sidecar container.
-    command:
-    - "/bin/bash"
-    - "./sidecar.sh"
-  # -- (list) Notebook configuration.
-  containers:
-    - target-port: 8888
-      cpu-limit: '.2'
-      memory-limit: .2Gi
-      name: "Test notebook"
-      image: quay.io/cdis/heal-notebooks:combined_tutorials__latest
+      # -- (string) The maximum amount of CPU the sidecar container can use
+      cpu-limit: '0.1'
+      # -- (string) The maximum amount of memory the sidecar container can use
+      memory-limit: 256Mi
+      # -- (string) The sidecar image.
+      image: quay.io/cdis/ecs-ws-sidecar:master
+      # -- (map) Environment variables to pass to the sidecar container
       env:
-        FRAME_ANCESTORS: https://{{ .Values.global.hostname }}
-      args:
-      - "--NotebookApp.base_url=/lw-workspace/proxy/"
-      - "--NotebookApp.default_url=/lab"
-      - "--NotebookApp.password=''"
-      - "--NotebookApp.token=''"
-      - "--NotebookApp.shutdown_no_activity_timeout=5400"
-      - "--NotebookApp.quit_button=False"
+        NAMESPACE: "{{ .Release.Namespace }}"
+        HOSTNAME: "{{ .Values.global.hostname }}"
+      # -- (list) Arguments to pass to the sidecare container.
+      args: []
+      # -- (list) Commands to run for the sidecar container.
       command:
-      - start-notebook.sh
-      path-rewrite: "/lw-workspace/proxy/"
-      use-tls: 'false'
-      ready-probe: "/lw-workspace/proxy/"
-      user-uid: 1000
-      fs-gid: 100
-      user-volume-location: "/home/jovyan/pd"
-      gen3-volume-location: "/home/jovyan/.gen3"
+      - "/bin/bash"
+      - "./sidecar.sh"
+      # -- (list) Notebook configuration.
+    containers:
+      - target-port: 8888
+        cpu-limit: '.2'
+        memory-limit: .2Gi
+        name: "Test notebook"
+        image: quay.io/cdis/heal-notebooks:combined_tutorials__latest
+        env:
+          FRAME_ANCESTORS: https://{{ .Values.global.hostname }}
+        args:
+        - "--NotebookApp.base_url=/lw-workspace/proxy/"
+        - "--NotebookApp.default_url=/lab"
+        - "--NotebookApp.password=''"
+        - "--NotebookApp.token=''"
+        - "--NotebookApp.shutdown_no_activity_timeout=5400"
+        - "--NotebookApp.quit_button=False"
+        command:
+        - start-notebook.sh
+        path-rewrite: "/lw-workspace/proxy/"
+        use-tls: 'false'
+        ready-probe: "/lw-workspace/proxy/"
+        user-uid: 1000
+        fs-gid: 100
+        user-volume-location: "/home/jovyan/pd"
+        gen3-volume-location: "/home/jovyan/.gen3"
