@@ -1,6 +1,6 @@
 global:
   hostname: qureshi.planx-pla.net
-  dev: false
+  dev: true
   postgres: 
     master:
       host: gen3-postgresql
