@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
+      targetRevision: master
+      ref: values
+    - chart: minio
+      repoURL: https://charts.bitnami.com/bitnami
+      targetRevision: 12.6.4
+      helm:
+        releaseName: gen3
+        valueFiles:
+          - $values/qureshi.planx-pla.net/values/minio.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: false
