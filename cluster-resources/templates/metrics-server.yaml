@@ -13,6 +13,9 @@ spec:
       chart: metrics-server
       helm:
         releaseName: metrics-server
+        values: |
+          args:
+            - --kubelet-insecure-tls
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system
