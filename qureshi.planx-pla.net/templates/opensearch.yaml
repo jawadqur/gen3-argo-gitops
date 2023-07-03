@@ -11,7 +11,7 @@ spec:
       ref: values
     - chart: opensearch
       repoURL: https://opensearch-project.github.io/helm-charts/
-      targetRevision: 2.13.1
+      targetRevision: 1.21.0
       helm:
         releaseName: opensearch
         valueFiles:
