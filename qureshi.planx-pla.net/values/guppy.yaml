@@ -1,0 +1,24 @@
+guppy:
+  image: 
+    tag: feat_es7
+
+# -- (list) Elasticsearch index configurations
+indices:
+- index: dev_case
+  type: case
+- index: dev_file
+  type: file  
+
+# -- (string) The Elasticsearch configuration index
+configIndex: dev_case-array-config
+# -- (string) The field used for access control and authorization filters
+authFilterField: auth_resource_path
+# -- (bool) Whether or not to enable encryption for specified fields
+enableEncryptWhitelist: true
+# -- (string) A comma-separated list of fields to encrypt
+encryptWhitelist: test1
+
+esEndpoint: gen3-elasticsearch-master
+
+# -- (bool) Whether or not to restore elasticsearch indices from a snapshot in s3
+dbRestore: false

@@ -11,13 +11,15 @@ spec:
   sources:
     - chart: gen3
       repoURL: https://helm.gen3.org
-      targetRevision: 0.1.17
+      targetRevision: 0.1.18
       helm:
         releaseName: gen3
         valueFiles:
           - $values/qureshi.planx-pla.net/values/gen3.yaml
           - $values/qureshi.planx-pla.net/values/fence.yaml
           - $values/qureshi.planx-pla.net/values/portal.yaml
+          - $values/qureshi.planx-pla.net/values/hatchery.yaml
+          - $values/qureshi.planx-pla.net/values/guppy.yaml
     - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
       targetRevision: master
       ref: values
