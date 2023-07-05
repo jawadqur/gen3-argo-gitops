@@ -3,5 +3,5 @@ maxUnavailable: 0
 singleNode: true
 replicas: 1
 esConfig:
-  elasticsearch:yml: |
+  elasticsearch.yml: |
     # Here we can add elasticsearch config
