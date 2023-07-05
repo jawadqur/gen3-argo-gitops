@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elasticsearch
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
+      targetRevision: master
+      ref: values
+    - chart: elasticsearch
+      repoURL: https://helm.elastic.co
+      targetRevision: 7.10.2
+      helm:
+        releaseName: gen3
+        valueFiles:
+          - $values/qureshi.planx-pla.net/values/opensearch.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true

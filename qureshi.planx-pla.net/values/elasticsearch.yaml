@@ -1,0 +1,7 @@
+clusterName: gen3-elasticsearch
+maxUnavailable: 0
+singleNode: true
+replicas: 1
+esConfig:
+  elasticsearch:yml: |
+    # Here we can add elasticsearch config
