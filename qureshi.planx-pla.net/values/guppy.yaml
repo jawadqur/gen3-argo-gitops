@@ -22,4 +22,4 @@ encryptWhitelist: test1
 esEndpoint: "gen3-elasticsearch-master:9200"
 
 # -- (bool) Whether or not to restore elasticsearch indices from a snapshot in s3
-dbRestore: false
+dbRestore: False
