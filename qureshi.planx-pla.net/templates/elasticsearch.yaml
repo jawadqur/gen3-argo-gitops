@@ -15,7 +15,7 @@ spec:
       helm:
         releaseName: gen3
         valueFiles:
-          - $values/qureshi.planx-pla.net/values/opensearch.yaml
+          - $values/qureshi.planx-pla.net/values/elasticsearch.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
