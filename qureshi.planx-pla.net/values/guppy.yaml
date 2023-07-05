@@ -1,3 +1,6 @@
+global:
+  tierAccessLimit: "1000"
+
 guppy:
   enabled: true
   image: 
