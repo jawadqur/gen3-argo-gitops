@@ -1,5 +1,5 @@
 global:
-  tierAccessLimit: "1000"
+  tierAccessLimit: "100"
   hostname: qureshi.planx-pla.net
   dev: false
   postgres: 
