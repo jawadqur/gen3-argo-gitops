@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: opentelemetry-operator
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
+      targetRevision: 0.32.0
+      chart: opentelemetry-operator
+      helm:
+        releaseName: opentelemetry-operator
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: opentelemetry-operator-system
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
