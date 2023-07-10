@@ -1,43 +1,20 @@
-apiVersion: opentelemetry.io/v1alpha1
-kind: OpenTelemetryCollector
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: demo
+  name: opentelmetry
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
-  config: |
-    receivers:
-      otlp:
-        protocols:
-          grpc:
-          http:
-    processors:
-      memory_limiter:
-        check_interval: 1s
-        limit_percentage: 75
-        spike_limit_percentage: 15
-      batch:
-        send_batch_size: 10000
-        timeout: 10s
+  project: default
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/jawadqur/gen3-argo-gitops.git
+    path: opentelemetry
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 
-    exporters:
-      logging:
-      jaeger:
-        endpoint: gen3-jaeger-collector:14250
-    service:
-      pipelines:
-        traces:
-          receivers: [otlp]
-          processors: [memory_limiter, batch]
-          exporters: [logging]
-        metrics:
-          receivers: [otlp]
-          processors: [memory_limiter, batch]
-          exporters: [logging]
-        logs:
-          receivers: [otlp]
-          processors: [memory_limiter, batch]
-          exporters: [logging]
----
-apiVersion: jaegertracing.io/v1
-kind: Jaeger
-metadata:
-  name: gen3-jaeger
