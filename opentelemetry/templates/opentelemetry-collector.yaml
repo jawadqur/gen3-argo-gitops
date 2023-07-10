@@ -22,6 +22,8 @@ spec:
       logging:
       jaeger:
         endpoint: gen3-jaeger-collector:14250
+        tls:
+          insecure: true
     service:
       pipelines:
         traces:
