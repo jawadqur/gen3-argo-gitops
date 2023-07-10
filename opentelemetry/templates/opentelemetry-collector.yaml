@@ -21,7 +21,7 @@ spec:
 
     exporters:
       logging:
-      coralogix:
+      otlp:
         endpoint: otel-coralogix:14250
         tls:
           insecure: true
@@ -34,7 +34,7 @@ spec:
         traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging, jaeger, coralogix]
+          exporters: [logging, jaeger, otlp]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
