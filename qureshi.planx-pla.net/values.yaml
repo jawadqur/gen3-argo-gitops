@@ -3,3 +3,6 @@ opensearch:
 
 elasticsearch:
   enabled: true
+
+opentelemtry:
+  enabled: true
