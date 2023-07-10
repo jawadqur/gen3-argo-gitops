@@ -1,2 +1,5 @@
 istio:
   enabled: false
+
+jaeger:
+  enabled: true
