@@ -21,7 +21,7 @@ spec:
     exporters:
       logging:
       jaeger:
-        endpoint: gen3-collector:14250
+        endpoint: gen3-jaeger-collector:14250
     service:
       pipelines:
         traces:
@@ -36,3 +36,8 @@ spec:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
+---
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: gen3-jaeger
