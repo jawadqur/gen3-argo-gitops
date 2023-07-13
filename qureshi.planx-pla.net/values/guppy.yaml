@@ -1,5 +1,5 @@
 global:
-  tierAccessLimit: '"100"'
+  tierAccessLimit: '"1000"'
 guppy:
   enabled: true
   image: 
