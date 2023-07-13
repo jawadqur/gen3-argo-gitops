@@ -13,6 +13,7 @@ spec:
       repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 48.1.1
       helm:
+        skipCrds: true
         valueFiles: 
         - $cloudautomation/kube/services/monitoring/values.yaml
         releaseName: prometheus
