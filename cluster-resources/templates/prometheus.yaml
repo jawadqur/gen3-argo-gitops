@@ -32,6 +32,9 @@ metadata:
 spec:
   project: default
   sources:
+    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
+      targetRevision: master
+      ref: values
     - repoURL: 'https://github.com/uc-cdis/cloud-automation.git'
       targetRevision: master
       ref: cloudautomation
@@ -41,7 +44,7 @@ spec:
       helm:
         skipCrds: true
         valueFiles: 
-        - $cloudautomation/kube/services/monitoring/values.yaml
+        - $values/cluster-resources/values/kube-prometheus-values.yaml
         releaseName: prometheus
   destination:
     server: 'https://kubernetes.default.svc'
