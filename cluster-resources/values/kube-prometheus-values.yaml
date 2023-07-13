@@ -19,7 +19,16 @@ alertmanager:
 ##
 grafana:
   enabled: true
-  
+
+  additionalDataSources:
+    - name: Tempo
+      type: tempo
+      uid: tempo
+      url: http://tempo.monitoring.svc.cluster.local:3100
+      access: proxy
+      version: 1
+
+
   ingress:
     ## If true, Grafana Ingress will be created
     ##
