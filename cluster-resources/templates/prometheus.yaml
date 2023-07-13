@@ -27,7 +27,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-application
+  name: prometheus
   namespace: argocd
 spec:
   project: default
