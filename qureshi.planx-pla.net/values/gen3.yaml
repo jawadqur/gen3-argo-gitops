@@ -56,8 +56,6 @@ peregrine:
     password: test
 
 sheepdog:
-  image:
-    tag: master
   postgres:
     # Helm lookup doesn't work in ArgoCD
     password: test
