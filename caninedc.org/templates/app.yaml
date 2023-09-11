@@ -15,9 +15,9 @@ spec:
         releaseName: canineprod
         valueFiles:
           - $values/caninedc.org/values/values.yaml
-          - $values/caninedc.org/values/fenceValues.yaml
-          - $values/caninedc.org/values/portalValues.yaml
-          - $values/caninedc.org/values/guppyValues.yaml
+          - $values/caninedc.org/values/fence.yaml
+          - $values/caninedc.org/values/portal.yaml
+          - $values/caninedc.org/values/guppy.yaml
     - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
       targetRevision: master
       ref: values
