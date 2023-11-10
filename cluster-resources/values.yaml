@@ -9,3 +9,10 @@ ingress:
     enabled: false
   nginx: 
     enabled: true
+
+
+certManager:
+  enabled: false
+
+otel:
+  enabled: false
