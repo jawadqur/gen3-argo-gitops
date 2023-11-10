@@ -12,7 +12,6 @@ ambassador:
 
 revproxy:
   ingress:
-    className: kong
     enabled: true
     hosts:
     # Replace with your hostname
