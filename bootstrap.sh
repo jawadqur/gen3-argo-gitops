@@ -12,7 +12,7 @@ if ! kind get clusters
 then
     if ! kind create cluster
     then 
-        echo "ERROR: kind could not be found, or returned an error."
+        # echo "ERROR: kind could not be found, or returned an error."
         # echo "please install kind before running this script"
         # echo "https://kind.sigs.k8s.io/docs/user/quick-start/"
         # exit 1
@@ -38,7 +38,7 @@ then
             chmod +x ./kind
             sudo mv ./kind /usr/local/bin/kind
         fi
-
+        kind create cluster
     else
         kind create cluster
     fi
@@ -47,10 +47,29 @@ fi
 # Check if kubectl is installed
 if ! kubectl get pods
 then
-    echo "ERROR: kubectl could not be found, or returned an error."
-    echo "please install kubectl before running this script"
-    echo "https://kubernetes.io/docs/tasks/tools/"
-    exit 1
+    # install kubectl check if darwin or linux etc etc 
+    echo "Installing kubectl..."
+    # Check if uname == Darwin
+    if [ $(uname) = Darwin ]
+    then
+        # For AMD64 / x86_64
+        [ $(uname -m) = x86_64 ] && curl -Lo ./kubectl https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/darwin/amd64/kubectl
+        # For ARM64
+        [ $(uname -m) = aarch64 ] && curl -Lo ./kubectl https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/darwin/arm64/kubectl
+        chmod +x ./kubectl
+        sudo mv ./kubectl /usr/local/bin/kubectl
+    fi
+
+    # Check if uname == Linux
+    if [ $(uname) = Linux ]
+    then
+        # For AMD64 / x86_64
+        [ $(uname -m) = x86_64 ] && curl -Lo ./kubectl https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kubectl
+        # For ARM64
+        [ $(uname -m) = aarch64 ] && curl -Lo ./kubectl https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/arm64/kubectl
+        chmod +x ./kubectl
+        sudo mv ./kubectl /usr/local/bin/kubectl
+    fi
 fi
 
 
