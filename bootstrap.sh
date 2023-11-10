@@ -8,7 +8,7 @@ then
 fi
 
 # Check if KIND cluster is running, if not create kind cluster. If kind isn't installed error out. 
-if ! kind get clusters
+if ! kind get clusters | grep -q "kind"
 then
     if ! kind create cluster
     then 
