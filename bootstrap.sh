@@ -1,14 +1,23 @@
 
-# Check if KIND is installed if not install it
-if ! kind create cluster
-then 
-    echo "ERROR: kind could not be found, or returned an error."
-    echo "please install kind before running this script"
-    echo "https://kind.sigs.k8s.io/docs/user/quick-start/"
+if ! docker ps 
+then
+    echo "ERROR: docker could not be found, or returned an error."
+    echo "please install docker before running this script"
+    echo "https://docs.docker.com/get-docker/"
     exit 1
-else
-    echo "kind is installed"
 fi
+
+# Check if KIND cluster is running, if not create kind cluster. If kind isn't installed error out. 
+if ! kind get clusters
+    if ! kind create cluster
+    then 
+        echo "ERROR: kind could not be found, or returned an error."
+        echo "please install kind before running this script"
+        echo "https://kind.sigs.k8s.io/docs/user/quick-start/"
+        exit 1
+    else
+        kind create cluster
+    fi
 
 
 
