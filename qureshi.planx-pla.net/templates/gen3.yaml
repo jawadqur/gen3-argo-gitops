@@ -21,7 +21,7 @@ spec:
           - $values/qureshi.planx-pla.net/values/hatchery.yaml
           - $values/qureshi.planx-pla.net/values/guppy.yaml
     - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
-      targetRevision: master
+      targetRevision: feat/automation
       ref: values
   destination:
     server: "https://kubernetes.default.svc"
