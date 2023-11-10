@@ -5,4 +5,4 @@ fence:
     # Helm lookup doesn't work in ArgoCD
     password: test
   FENCE_CONFIG:
-    MOCK_GOOGLE_AUTH: false
+    MOCK_GOOGLE_AUTH: true
