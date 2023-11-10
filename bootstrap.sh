@@ -9,6 +9,7 @@ fi
 
 # Check if KIND cluster is running, if not create kind cluster. If kind isn't installed error out. 
 if ! kind get clusters
+then
     if ! kind create cluster
     then 
         echo "ERROR: kind could not be found, or returned an error."
