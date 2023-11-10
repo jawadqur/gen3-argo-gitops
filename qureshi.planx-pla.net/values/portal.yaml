@@ -4,7 +4,7 @@ portal:
     tag: master
   resources:
     requests:
-      cpu: 2
+      cpu: 1
       memory: 2Gi
   # This is only used if you use the default portal, the prebuilt portal will ignore these as the configuration of that portal is handled outside here.
   gitops:
