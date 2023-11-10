@@ -1,4 +1,4 @@
-{{- if .Values.ingress.kong.enabled }}
+{{- if .Values.ingress.nginx.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -9,15 +9,16 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
-      targetRevision: master
-      path: bootstrap/charts/kong/
+#   https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+    - repoURL: 'https://github.com/kubernetes/ingress-nginx.git'
+      targetRevision: main
+      path: deploy/static/provider/kind/
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: kong
+    namespace: ingress-nginx
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
     automated:
-      selfHeal: false
+      selfHeal: true
 {{- end }}
