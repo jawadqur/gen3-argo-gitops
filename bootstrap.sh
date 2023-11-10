@@ -13,9 +13,32 @@ then
     if ! kind create cluster
     then 
         echo "ERROR: kind could not be found, or returned an error."
-        echo "please install kind before running this script"
-        echo "https://kind.sigs.k8s.io/docs/user/quick-start/"
-        exit 1
+        # echo "please install kind before running this script"
+        # echo "https://kind.sigs.k8s.io/docs/user/quick-start/"
+        # exit 1
+        echo "Installing kind..."
+        # Check if uname == Darwin
+        if [ $(uname) = Darwin ]
+        then
+            # For AMD64 / x86_64
+            [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-amd64
+            # For ARM64
+            [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-arm64
+            chmod +x ./kind
+            sudo mv ./kind /usr/local/bin/kind
+        fi
+
+        # Check if uname == Linux
+        if [ $(uname) = Linux ]
+        then
+            # For AMD64 / x86_64
+            [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+            # For ARM64
+            [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-arm64
+            chmod +x ./kind
+            sudo mv ./kind /usr/local/bin/kind
+        fi
+
     else
         kind create cluster
     fi
