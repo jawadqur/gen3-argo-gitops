@@ -72,6 +72,19 @@ then
     fi
 fi
 
+# # Check if k9s installed, if not isntall it for mac or linux 
+# if ! k9s
+# then
+#     echo "Installing k9s..."
+#     # Check if uname == Darwin
+#     if [ $(uname) = Darwin ]
+#     then
+#         # For AMD64 / x86_64
+#         [ $(uname -m) = x86_64 ] && curl -Lo ./k9s https://github.com/derailed/k9s/releases/download/v0.28.0/k9s_Darwin_amd64.tar.gz
+#         # For ARM64
+#         [ $(uname -m) = aarch64 ] && curl -Lo ./k9s https://github.com/derailed/k9s/releases/download/v0.28.0/k9s_Darwin_arm64.tar.gz
+#         tar -xvf k9s_Darwin_amd64.tar.gz
+#         chmod +x ./k9s
 
 
 # Deploy argocd if it's not deployed 
