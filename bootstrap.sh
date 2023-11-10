@@ -18,8 +18,7 @@ if ! kind get clusters
     else
         kind create cluster
     fi
-
-
+fi
 
 # Check if kubectl is installed
 if ! kubectl get pods
