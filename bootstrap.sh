@@ -1,3 +1,25 @@
+function createKind() {
+    cat <<EOF | kind create cluster --config=-
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+kubeadmConfigPatches:
+- |
+    kind: InitConfiguration
+    nodeRegistration:
+    kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+extraPortMappings:
+- containerPort: 80
+    hostPort: 80
+    protocol: TCP
+- containerPort: 443
+    hostPort: 443
+    protocol: TCP
+EOF
+}
+
 
 if ! docker ps 
 then
@@ -10,12 +32,8 @@ fi
 # Check if KIND cluster is running, if not create kind cluster. If kind isn't installed error out. 
 if ! kind get clusters | grep -q "kind"
 then
-    if ! kind create cluster
+    if ! createKind
     then 
-        # echo "ERROR: kind could not be found, or returned an error."
-        # echo "please install kind before running this script"
-        # echo "https://kind.sigs.k8s.io/docs/user/quick-start/"
-        # exit 1
         echo "Installing kind..."
         # Check if uname == Darwin
         if [ $(uname) = Darwin ]
@@ -38,9 +56,9 @@ then
             chmod +x ./kind
             sudo mv ./kind /usr/local/bin/kind
         fi
-        kind create cluster
+        createKind
     else
-        kind create cluster
+        createKind
     fi
 fi
 
