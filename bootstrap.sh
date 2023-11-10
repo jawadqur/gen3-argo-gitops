@@ -1,12 +1,27 @@
 
+# Check if KIND is installed if not install it
+if ! kind create cluster
+then 
+    echo "ERROR: kind could not be found, or returned an error."
+    echo "please install kind before running this script"
+    echo "https://kind.sigs.k8s.io/docs/user/quick-start/"
+    exit 1
+else
+    echo "kind is installed"
+fi
+
+
+
 # Check if kubectl is installed
-if ! command -v kubectl &> /dev/null
+if ! kubectl get pods
 then
-    echo "kubectl could not be found"
+    echo "ERROR: kubectl could not be found, or returned an error."
     echo "please install kubectl before running this script"
     echo "https://kubernetes.io/docs/tasks/tools/"
     exit 1
 fi
+
+
 
 # Deploy argocd if it's not deployed 
 if ! kubectl get pods -n argocd | grep -q "argocd-server"
@@ -15,7 +30,7 @@ then
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
     echo "sleep 5..."
-    sleep 5
+    sleep 15
 fi
 
 
@@ -37,4 +52,6 @@ PASSWORD=$(kubectl get secrets -n argocd argocd-initial-admin-secret -o yaml | y
 echo "kubectl get secrets -n argocd argocd-initial-admin-secret -o yaml | yq -r .data.password | base64 -d | xargs echo"
 
 echo "Port forward and access ArgoCD ui at http://localhost:8080. Use username admin and password (from above): $PASSWORD"
+
 echo "kubectl port-forward svc/argocd-server -n argocd 8080:443"
+kubectl port-forward svc/argocd-server -n argocd 8080:443 &
