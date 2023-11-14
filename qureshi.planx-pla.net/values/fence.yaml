@@ -1,6 +1,6 @@
 fence:
   image:
-    tag: chore_boto-update
+    tag: feat_gunicorn
   postgres:
     # Helm lookup doesn't work in ArgoCD
     password: test
