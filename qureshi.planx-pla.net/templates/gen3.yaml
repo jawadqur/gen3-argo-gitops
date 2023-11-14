@@ -9,9 +9,9 @@ metadata:
 spec:
   project: default
   sources:
-    - chart: gen3
-      repoURL: https://helm.gen3.org
-      targetRevision: 0.1.18
+    - path: helm/gen3
+      repoURL: https://github.com/uc-cdis/gen3-helm.git
+      targetRevision: feat/GPE-979
       helm:
         releaseName: gen3
         valueFiles:
