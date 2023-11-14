@@ -40,6 +40,8 @@ audit:
     password: test
 
 indexd:
+  image:
+    tag: feat_GPE-788
   postgres:
     # Helm lookup doesn't work in ArgoCD
     password: test
