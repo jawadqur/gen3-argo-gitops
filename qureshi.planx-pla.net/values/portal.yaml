@@ -2,9 +2,9 @@ portal:
   image: 
     repository: quay.io/cdis/data-portal-prebuilt
     tag: jenkins-brain.planx-pla.net-chore-prebuilt_jenkins
-  resources:
-    requests:
-      cpu: 1
+  # resources:
+    # requests:
+      # cpu: 1
   # This is only used if you use the default portal, the prebuilt portal will ignore these as the configuration of that portal is handled outside here.
   gitops:
     
