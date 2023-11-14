@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
     - repoURL: 'https://github.com/jawadqur/gen3-argo-gitops.git'
-      targetRevision: feat/automation
+      targetRevision: master
       ref: values
     - repoURL: 'https://github.com/uc-cdis/cloud-automation.git'
       targetRevision: master

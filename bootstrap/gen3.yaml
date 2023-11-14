@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/jawadqur/gen3-argo-gitops.git
-    targetRevision: feat/automation
+    targetRevision: master
     path: qureshi.planx-pla.net
   syncPolicy:
     syncOptions:
