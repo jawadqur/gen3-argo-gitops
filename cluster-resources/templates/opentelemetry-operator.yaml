@@ -1,3 +1,4 @@
+{{- if .Values.otel.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -21,3 +22,4 @@ spec:
       - CreateNamespace=true
     automated:
       selfHeal: true
+{{- end }}

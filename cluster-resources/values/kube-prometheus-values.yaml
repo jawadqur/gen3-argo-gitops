@@ -19,7 +19,13 @@ alertmanager:
 ##
 grafana:
   enabled: true
-
+  grafana.ini:
+    server:
+      root_url: /grafana
+    auth.anonymous:
+      enabled: true
+      org_name: Main Org.
+      org_role: Admin
   additionalDataSources:
     - name: Tempo
       type: tempo

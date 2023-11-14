@@ -3,3 +3,16 @@ istio:
 
 jaeger:
   enabled: false
+
+ingress:
+  kong: 
+    enabled: false
+  nginx: 
+    enabled: true
+
+
+certManager:
+  enabled: false
+
+otel:
+  enabled: false

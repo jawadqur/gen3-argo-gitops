@@ -1,0 +1,24 @@
+{{- if .Values.ingress.nginx.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+#   https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+    - repoURL: 'https://github.com/kubernetes/ingress-nginx.git'
+      targetRevision: main
+      path: deploy/static/provider/kind/
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: ingress-nginx
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+{{- end }}
